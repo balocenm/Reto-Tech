@@ -1,0 +1,91 @@
+<div class="container app">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="text-center">
+        {{title}}
+      </h1>
+    </div>
+    <div class="col-sm-4" *ngIf="msgActive">
+      <div class="alert alert-success alert-dismissable" *ngIf="msg">
+        <a href="#" class="close" (click)="closeAlert()">
+          &times;
+        </a>
+        {{msg}}
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8 col-sm-12">
+      <h2 class="mb-5">Registrar Cliente:</h2>
+      <form [formGroup]="clientForm" (ngSubmit)="registerForm()" class="form-horizontal">
+        <div class="form-group d-custom-space">
+          <p for="name" class="control-label col-lg-3 col-sm-12">
+            Nombre
+          </p>
+          <div class="col-lg-9 col-sm-12">
+            <input type="text" class="form-control" formControlName="name" placeholder="Ingrese Nombre">
+            <div class="alert-danger mt-2" *ngIf="name.invalid && (name.dirty || name.touched)">
+              <div class="container-error-message" *ngIf="name.errors.required">
+                El nombre es requerido.
+              </div>
+              <div class="container-error-message" *ngIf="name.errors.minlength">
+                Nombre debe contener minimo 2 caracteres.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group d-custom-space">
+          <label for="lastName" class="control-label col-lg-3 col-sm-12">
+            Apellido
+          </label>
+          <div class="col-lg-9 col-sm-12">
+            <input type="text" class="form-control" formControlName="lastName" placeholder="Ingrese apellido">
+            <div class="alert-danger mt-2" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+              <div class="container-error-message" *ngIf="lastName.errors.required">
+                El apellido es requerido.
+              </div>
+              <div class="container-error-message" *ngIf="lastName.errors.minlength">
+                EL apellido debe contener minimo 2 caracteres.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group d-custom-space">
+          <label for="age" class="control-label col-lg-3 col-sm-12">
+            Edad
+          </label>
+          <div class="col-lg-9 col-sm-12">
+            <input type="text" class="form-control" formControlName="age" placeholder="Ingrese edad">
+            <div class="alert-danger mt-2" *ngIf="age.invalid && (age.dirty || age.touched)">
+              <div class="container-error-message" *ngIf="age.errors.required">
+                La edad es requerido.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group d-custom-space">
+          <label for="email" class="control-label col-sm-12 col-lg-3">
+            Fecha de nacimiento:
+          </label>
+          <div class="col-sm-12 col-lg-9">
+            <input type="text" class="form-control" formControlName="Date" placeholder="Ingrese fecha">
+            <div class="alert-danger mt-2" *ngIf="Date.invalid && (Date.dirty || Date.touched)">
+              <div class="container-error-message" *ngIf="Date.errors.required">
+                La fecha de nacimiento es requerido.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-success">
+              Registrar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
