@@ -16,7 +16,7 @@ export class DataDbService {
     this.items = db.collection('client').valueChanges();
    }
 
-   saveMessage(newClient: IClient) {
+   saveClient(newClient: IClient) {
      this.clientCollection.add(newClient);
    }
 

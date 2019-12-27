@@ -13,6 +13,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { DataDbService } from './businness/service/data-db.service';
 import { ClientProjectionComponent } from './businness/components/client-projection/client-projection.component';
+import { ClientListComponent } from './businness/components/client-list/client-list.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ClientProjectionComponent } from './businness/components/client-project
     SummaryComponent,
     HomeComponent,
     ClientProjectionComponent,
+    ClientListComponent,
   ],
   imports: [
     BrowserModule,

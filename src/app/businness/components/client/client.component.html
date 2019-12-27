@@ -56,7 +56,7 @@
             Edad
           </label>
           <div class="col-lg-9 col-sm-12">
-            <input type="text" class="form-control" formControlName="age" placeholder="Ingrese edad">
+            <input type="number" class="form-control" formControlName="age" placeholder="Ingrese edad">
             <div class="alert-danger mt-2" *ngIf="age.invalid && (age.dirty || age.touched)">
               <div class="container-error-message" *ngIf="age.errors.required">
                 La edad es requerido.

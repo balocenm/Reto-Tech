@@ -44,8 +44,8 @@ export class ClientComponent implements OnInit {
     if (this.clientForm.valid) {
       this.msg = 'Se registro correctamente al cliente';
       this.msgActive = true;
-      this.dbData.saveMessage(this.clientForm.value);
-      this.router.navigate(['/']);
+      this.dbData.saveClient(this.clientForm.value);
+      this.router.navigate(['/client-list']);
       this.onResetForm();
     } else {
       console.log('No valid');

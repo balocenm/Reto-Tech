@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row d-row-table">
+      <div class="col-sm-8">
+       <div class="col-12 d-title">
+        <h2>Lista de Clientes: </h2>
+        <a [routerLink]="'/clients'" class="btn btn-success mr-2">
+          Registrar Cliente
+        </a>
+       </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Edad</th>
+              <th>Fecha de nacimiento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let client of listClients; let i = index">
+              <td>{{client.name}}</td>
+              <td>{{client.lastName}}</td>
+              <td>{{client.age}}</td>
+              <td>{{client.date}}</td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row d-buttom-custom">
+      <label>Promedio edades:</label>
+      <strong>{{average}}</strong>
+    </div>
+    <div class="row d-buttom-custom">
+      <label>Desvición estandar de edades:</label>
+      <strong>{{result}}</strong>
+    </div>
+    <div class="row d-buttom-custom">
+      <button type="submit" class="btn btn-danger" (click)="back()">
+        Volver
+      </button>
+    </div>
+  </div>
+  
