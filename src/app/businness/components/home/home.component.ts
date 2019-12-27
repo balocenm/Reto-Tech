@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   listClients: IClient[];
   average: number;
   resultado: number;
-  powGA: number;
   constructor(private dbData: DataDbService) { }
 
   ngOnInit() {
@@ -29,22 +28,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   calcularPromedio() {
-    this.average = this.listClients.map(x => x.age).reduce((a, b) => a + b) / this.listClients.length;
+    if (this.listClients !== undefined) {
+      this.average = this.listClients.map(x => x.age).reduce((a, b) => a + b) / this.listClients.length;
+    }
   }
   calcularDesviacion() {
-    const numerador = this.listClients.map(x => x.age).reduce((a, b) => {
-
-
-      return this.numberPow(a) + this.numberPow(b);
-    });
-
-
-    console.log(numerador);
+    if (this.listClients !== undefined) {
+      const numerador = this.listClients.map(x => x.age).map((value) => {
+        const resultante = value - this.average;
+        const alcuadrado = resultante * resultante;
+        return alcuadrado;
+      }).reduce((a, b) => a + b);
+      this.resultado = Math.sqrt(numerador / (this.listClients.length - 1));
+    }
   }
-
-  numberPow(age: number): number {
-    const ageMinusAverage = age - this.average;
-    return ageMinusAverage * ageMinusAverage;
-  }
-
 }
