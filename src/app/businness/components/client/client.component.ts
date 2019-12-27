@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataDbService } from '../../service/data-db.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client',
@@ -15,7 +16,9 @@ export class ClientComponent implements OnInit {
 
   msg: string;
   msgActive: boolean;
-  constructor(private dbData: DataDbService) {
+  constructor(
+    private dbData: DataDbService,
+    private router: Router, ) {
     this.clientForm = this.createFormGroup();
   }
 
@@ -33,7 +36,7 @@ export class ClientComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
       age: new FormControl('', [Validators.required]),
-      Date: new FormControl('', [Validators.required, Validators.minLength(5)])
+      date: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
   }
 
@@ -42,6 +45,7 @@ export class ClientComponent implements OnInit {
       this.msg = 'Se registro correctamente al cliente';
       this.msgActive = true;
       this.dbData.saveMessage(this.clientForm.value);
+      this.router.navigate(['/']);
       this.onResetForm();
     } else {
       console.log('No valid');
@@ -54,8 +58,12 @@ export class ClientComponent implements OnInit {
     this.msgActive = false;
   }
 
+  back() {
+    this.router.navigate(['/']);
+  }
+
   get name() { return this.clientForm.get('name'); }
   get lastName() { return this.clientForm.get('lastName'); }
   get age() { return this.clientForm.get('age'); }
-  get Date() { return this.clientForm.get('Date'); }
+  get date() { return this.clientForm.get('date'); }
 }

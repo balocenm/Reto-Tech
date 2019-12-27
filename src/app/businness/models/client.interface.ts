@@ -1,6 +1,6 @@
 export interface IClient {
     name: string;
     lastName: string;
-    age: string;
+    age: number;
     date: string;
 }

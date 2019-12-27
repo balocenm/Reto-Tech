@@ -8,12 +8,19 @@ import { IClient } from '../models/client.interface';
 })
 export class DataDbService {
   private clientCollection: AngularFirestoreCollection<IClient>;
+  items: Observable<any[]>;
 
-  constructor(private afs: AngularFirestore) {
-    this.clientCollection = afs.collection<IClient>('client');
+
+  constructor(db: AngularFirestore) {
+    this.clientCollection = db.collection<IClient>('client');
+    this.items = db.collection('client').valueChanges();
    }
 
    saveMessage(newClient: IClient) {
      this.clientCollection.add(newClient);
+   }
+
+   getClient() {
+    return this.items;
    }
 }
