@@ -12,9 +12,11 @@ export class ClientListComponent implements OnInit, AfterViewInit {
 
   listClients: IClient[];
   average: number;
-  result: number;
-  constructor(private dbData: DataDbService,
-    private router: Router,) { }
+  averageView: string;
+  result: string;
+  constructor(
+    private dbData: DataDbService,
+    private router: Router, ) { }
 
   ngOnInit() {
     this.dbData.items.subscribe(value => {
@@ -32,6 +34,7 @@ export class ClientListComponent implements OnInit, AfterViewInit {
   calculateAverage() {
     if (this.listClients !== undefined) {
       this.average = this.listClients.map(x => x.age).reduce((a, b) => a + b) / (this.listClients.length);
+      this.averageView = (this.listClients.map(x => x.age).reduce((a, b) => a + b) / (this.listClients.length)).toFixed(2);
     }
   }
 
@@ -42,7 +45,7 @@ export class ClientListComponent implements OnInit, AfterViewInit {
         const squared = resulting * resulting;
         return squared;
       }).reduce((a, b) => a + b);
-      this.result = Math.sqrt(numerator / (this.listClients.length - 1));
+      this.result = Math.sqrt(numerator / (this.listClients.length - 1)).toFixed(2);
     }
   }
   back() {

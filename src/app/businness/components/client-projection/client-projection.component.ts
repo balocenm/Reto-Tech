@@ -9,6 +9,20 @@ import { DataDbService } from '../../service/data-db.service';
 })
 export class ClientProjectionComponent implements OnInit {
 
+  rango = [{
+    ONE: '1_10',
+    ELEVEN: '11_20',
+    TWENTY: '21_30',
+    THIRTY: '31_40',
+    FORTY: '41_50',
+    FIFTY: '51_60',
+    SIXTY: '61_70',
+    SEVENTY: '71_80',
+    EIGHTY: '81_90',
+    NINETY: '91_99',
+  }];
+
+
   listClients: IClient[];
   average: number;
   result: number;
@@ -16,20 +30,18 @@ export class ClientProjectionComponent implements OnInit {
 
   ngOnInit() {
     this.dbData.items.subscribe(value => {
+      value.map(a => {
+        this.calcularRangoEdad(a.age);
+      });
       this.listClients = value;
     });
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.calculateAverage();
-    }, 3000);
-  }
 
-  calculateAverage() {
-    if (this.listClients !== undefined) {
-      this.average = this.listClients.map(x => x.age).reduce((a, b) => a + b) / (this.listClients.length);
-    }
+  calcularRangoEdad(age: string) {
+    this.rango.map(value => {
+       
+    });
   }
 
 }

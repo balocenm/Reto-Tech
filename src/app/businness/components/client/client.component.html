@@ -69,7 +69,12 @@
             Fecha de nacimiento:
           </label>
           <div class="col-sm-12 col-lg-9">
-            <input type="text" class="form-control" formControlName="date" placeholder="Ingrese fecha">
+            <!-- <input type="text" class="form-control" formControlName="date" placeholder="Ingrese fecha"> -->
+            <div class="input-group">
+              <input type="date" formControlName="date" id="date" name="date"
+                min="{{ config.minDate }}" max="{{ config.maxDate }}" class="form-control" />
+            </div>
+
             <div class="alert-danger mt-2" *ngIf="date.invalid && (date.dirty || date.touched)">
               <div class="container-error-message" *ngIf="date.errors.required">
                 La fecha de nacimiento es requerido.

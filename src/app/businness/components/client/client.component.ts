@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataDbService } from '../../service/data-db.service';
 import { Router } from '@angular/router';
+import { Config } from '../../models/client.interface';
 
 @Component({
   selector: 'app-client',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit {
-
+  config: Config;
   clientForm: FormGroup;
 
   title = 'reto-tech';
@@ -23,6 +24,9 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.config = new Config();
+    this.config.minDate = '1000-01-01';
+    this.config.maxDate = '3000-12-31';
     this.msg = '';
     this.msgActive = false;
   }
