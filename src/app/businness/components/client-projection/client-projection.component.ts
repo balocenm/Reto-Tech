@@ -124,7 +124,7 @@ export class ClientProjectionComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     setTimeout(() => {
       window.location.reload();
     }, 500);

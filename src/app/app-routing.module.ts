@@ -7,7 +7,7 @@ import { ClientProjectionComponent } from './businness/components/client-project
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'clients', component: ClientComponent },
   { path: 'client-list', component: ClientListComponent},
   { path: 'client-projection', component: ClientProjectionComponent},

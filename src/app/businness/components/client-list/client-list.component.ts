@@ -28,7 +28,7 @@ export class ClientListComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.calculateAverage();
       this.calculateDeviationAge();
-    }, 1000);
+    }, 1500);
   }
 
   calculateAverage() {
@@ -50,7 +50,7 @@ export class ClientListComponent implements OnInit, AfterViewInit {
   }
 
   back() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
     setTimeout(() => {
       window.location.reload();
     }, 500);
