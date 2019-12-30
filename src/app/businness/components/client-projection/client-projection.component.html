@@ -18,11 +18,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let client of listClients; let i = index">
+                    <tr *ngFor="let client of listClientDead">
                         <td>{{client.name}}</td>
                         <td>{{client.lastName}}</td>
                         <td>{{client.age}}</td>
-                        <td>{{client.date}}</td>
+                        <td>{{client.date | date: "dd-MM-yyyy"}}</td>
+                        <td>{{client.dead | date: "dd-MM-yyyy"}}</td>
                     </tr>
                 </tbody>
             </table>
