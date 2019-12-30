@@ -9,12 +9,12 @@ import { IClient } from '../models/client.interface';
 export class DataDbService {
 
   private clientCollection: AngularFirestoreCollection<IClient>;
-  items: Observable<any[]>;
+  listClient: Observable<any[]>;
 
 
   constructor(db: AngularFirestore) {
     this.clientCollection = db.collection<IClient>('client');
-    this.items = db.collection('client').valueChanges();
+    this.listClient = db.collection('client').valueChanges();
   }
 
   saveClient(newClient: IClient) {
@@ -22,6 +22,6 @@ export class DataDbService {
   }
 
   getClient() {
-    return this.items;
+    return this.listClient;
   }
 }

@@ -64,18 +64,18 @@ export class ClientProjectionComponent implements OnInit {
   average: number;
   result: number;
   range: string;
-  edadMuerte: number;
-  fechaProbableMuerte: string;
+  ageOfDeath: number;
+  probabilityOfDeathDate: string;
   constructor(
     private dbData: DataDbService,
     private router: Router) { }
 
   ngOnInit() {
-    this.dbData.items.subscribe(value => {
-      value.map((a, i) => {
-        const ranges = this.rango(a.age);
-        this.listClientDead = value;
-        this.listClientDead[i].dead = this.deahtProbability(ranges, a.age, a.date);
+    this.dbData.listClient.subscribe(clients => {
+      clients.map((customerData, i) => {
+        const ranges = this.rango(customerData.age);
+        this.listClientDead = clients;
+        this.listClientDead[i].dead = this.deahtProbability(ranges, customerData.age, customerData.date);
       });
     });
   }
@@ -107,19 +107,19 @@ export class ClientProjectionComponent implements OnInit {
       return a.id === ('range_' + range);
     });
 
-    const añosPorVivir = f.AverageLifeHope - age;
+    const yearsToLive = f.AverageLifeHope - age;
 
-    if (añosPorVivir > 0) {
-      this.edadMuerte = (añosPorVivir * (100 - f.value) / 100) + age;
+    if (yearsToLive > 0) {
+      this.ageOfDeath = (yearsToLive * (100 - f.value) / 100) + age;
     }
 
     const vec = date.split('-');
     // tslint:disable-next-line: radix
-    const fecha = new Date(parseInt(vec[0]), parseInt(vec[1]), parseInt(vec[2]));
-    fecha.setFullYear(fecha.getFullYear() + this.edadMuerte);
-    this.fechaProbableMuerte = fecha.getFullYear() + '-' + fecha.getMonth() + '-' + fecha.getDate();
+    const dateCalculated = new Date(parseInt(vec[0]), parseInt(vec[1]), parseInt(vec[2]));
+    dateCalculated.setFullYear(dateCalculated.getFullYear() + this.ageOfDeath);
+    this.probabilityOfDeathDate = dateCalculated.getFullYear() + '-' + dateCalculated.getMonth() + '-' + dateCalculated.getDate();
 
-    return this.fechaProbableMuerte;
+    return this.probabilityOfDeathDate;
 
   }
 
