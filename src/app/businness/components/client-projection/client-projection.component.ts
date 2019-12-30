@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IClient, IClientDead } from '../../models/client.interface';
 import { DataDbService } from '../../service/data-db.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-projection',
@@ -65,7 +66,9 @@ export class ClientProjectionComponent implements OnInit {
   range: string;
   edadMuerte: number;
   fechaProbableMuerte: string;
-  constructor(private dbData: DataDbService) { }
+  constructor(
+    private dbData: DataDbService,
+    private router: Router) { }
 
   ngOnInit() {
     this.dbData.items.subscribe(value => {
@@ -118,6 +121,10 @@ export class ClientProjectionComponent implements OnInit {
 
     return this.fechaProbableMuerte;
 
+  }
+
+  back() {
+    this.router.navigate(['/']);
   }
 
 }
