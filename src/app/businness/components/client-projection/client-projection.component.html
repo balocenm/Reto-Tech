@@ -2,18 +2,13 @@
   <div class="row d-row-table">
     <div class="col-sm-8">
       <div class="col-12 d-title">
-        <h2>Lista de Clientes: </h2>
-        <a [routerLink]="'/clients'" class="btn btn-success mr-2">
-          Registrar Cliente
-        </a>
+        <h2>Proyección y Analisis de Cliente: </h2>
       </div>
       <table class="table table-bordered">
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Edad</th>
-            <th>Fecha de nacimiento</th>
             <th>Fecha probable de muerte</th>
           </tr>
         </thead>
@@ -21,8 +16,6 @@
           <tr *ngFor="let client of listClientDead">
             <td>{{client.name}}</td>
             <td>{{client.lastName}}</td>
-            <td>{{client.age}}</td>
-            <td>{{client.date | date: "dd-MM-yyyy"}}</td>
             <td>{{client.dead | date: "dd-MM-yyyy"}}</td>
           </tr>
         </tbody>
