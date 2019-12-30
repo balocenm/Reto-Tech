@@ -75,7 +75,7 @@ export class ClientProjectionComponent implements OnInit {
       value.map((a, i) => {
         const ranges = this.rango(a.age);
         this.listClientDead = value;
-         this.listClientDead[i].dead = this.deahtProbability(ranges, a.age, a.date);
+        this.listClientDead[i].dead = this.deahtProbability(ranges, a.age, a.date);
       });
     });
   }
@@ -124,7 +124,10 @@ export class ClientProjectionComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
 }

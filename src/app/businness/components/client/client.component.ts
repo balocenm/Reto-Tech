@@ -52,7 +52,8 @@ export class ClientComponent implements OnInit {
       this.router.navigate(['/client-list']);
       this.onResetForm();
     } else {
-      console.log('No valid');
+      this.msg = 'Complete el formulario por favor';
+      this.msgActive = true;
     }
 
   }
@@ -63,7 +64,10 @@ export class ClientComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
   }
 
   get name() { return this.clientForm.get('name'); }
